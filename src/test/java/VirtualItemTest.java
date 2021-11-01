@@ -1,38 +1,18 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
-import shop.VirtualItem;
+import testData.TestData;
 
 public class VirtualItemTest extends BaseSpec{
-    VirtualItem virtualItem = new VirtualItem();
 
     @Test
-    @DisplayName("Test setName functionality")
-    void virtualItemSetName_NameIsSetProperly() {
-        String expectedName = "SKODA";
-        virtualItem.setName("SKODA");
-        String actualName = virtualItem.getName();
+    @DisplayName("Test toString functionality")
+    void realItemToString_StringRealItemIsReturnedSuccessfully() {
+        virtualItem = TestData.createVirtualItem();
+        String expectedVirtualItem = "Class: class shop.VirtualItem; Name: Audi; Price: 32026.9; Size on disk: 1560.0";
 
-        Assert.assertEquals(expectedName, actualName);
-    }
+        String actualVirtualItem = virtualItem.toString();
 
-    @Test
-    @DisplayName("Test setPrice functionality")
-    void virtualItemSetPrice_PriceIsSetProperly() {
-        Double expectedPrice = 20.0;
-        virtualItem.setPrice(20.0);
-        Double actualPrice = virtualItem.getPrice();
-
-        Assert.assertEquals(expectedPrice, actualPrice);
-    }
-
-    @Test
-    @DisplayName("Test setWeight functionality")
-    void virtualItemSetWeight_WeightIsSetProperly() {
-        Double expectedSizeOnDisk= 123344.0;
-        virtualItem.setSizeOnDisk(123344.0);
-        Double actualSizeOnDisk = virtualItem.getSizeOnDisk();
-
-        Assert.assertEquals(expectedSizeOnDisk, actualSizeOnDisk);
+        Assert.assertEquals(actualVirtualItem,expectedVirtualItem);
     }
 }

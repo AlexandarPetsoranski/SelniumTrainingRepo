@@ -2,37 +2,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 import shop.RealItem;
+import testData.TestData;
 
 public class RealItemTest extends BaseSpec{
-    RealItem realItem = new RealItem();
 
     @Test
-    @DisplayName("Test setName functionality")
-    void realItemSetName_NameIsSetProperly() {
-        String expectedName = "SKODA";
-        realItem.setName("SKODA");
-        String actualName = realItem.getName();
+    @DisplayName("Test toString functionality")
+    void realItemToString_StringRealItemIsReturnedSuccessfully() {
+        realItem = TestData.createRealItem();
+        String expectedRealItem = "Class: class shop.RealItem; Name: Audi; Price: 32026.9; Weight: 1560.0";
 
-        Assert.assertEquals(expectedName, actualName);
-    }
+        String actualRealItem = realItem.toString();
 
-    @Test
-    @DisplayName("Test setPrice functionality")
-    void realItemSetPrice_PriceIsSetProperly() {
-        Double expectedPrice = 20.0;
-        realItem.setPrice(20.0);
-        Double actualPrice = realItem.getPrice();
-
-        Assert.assertEquals(expectedPrice, actualPrice);
-    }
-
-    @Test
-    @DisplayName("Test setWeight functionality")
-    void realItemSetWeight_WeightIsSetProperly() {
-        Double expectedWeight= 123344.0;
-        realItem.setWeight(123344.0);
-        Double actualWeight = realItem.getWeight();
-
-        Assert.assertEquals(expectedWeight, actualWeight);
+        Assert.assertEquals(actualRealItem,expectedRealItem);
     }
 }

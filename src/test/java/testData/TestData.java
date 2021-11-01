@@ -4,13 +4,14 @@ import shop.Cart;
 import shop.RealItem;
 import shop.VirtualItem;
 
+import java.util.Random;
+
 public class TestData {
 
-    public static Cart testCart = new Cart("test-cart");
-    public static RealItem testRealItem = new RealItem();
-    public static VirtualItem testVirtualItem = new VirtualItem();
-
-    public static Cart createTestCart(String cartName){
+    public static Cart createTestCart(){
+        Cart testCart = new Cart(generateRandomString());
+        RealItem testRealItem = new RealItem();
+        VirtualItem testVirtualItem = new VirtualItem();
         testRealItem.setName("Audi");
         testRealItem.setPrice(32026.9);
         testRealItem.setWeight(1560.0);
@@ -39,6 +40,19 @@ public class TestData {
         virtualItem.setPrice(32026.9);
         virtualItem.setSizeOnDisk(1560);
         return virtualItem;
+    }
+
+    public static String generateRandomString(){
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 10;
+        Random random = new Random();
+
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+        return generatedString;
     }
 
 }
