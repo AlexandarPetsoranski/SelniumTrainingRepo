@@ -9,7 +9,6 @@ import testData.TestData;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CartTest extends BaseSpec {
 
@@ -24,26 +23,23 @@ public class CartTest extends BaseSpec {
         List<VirtualItem> actualVirtualItems = cart.getVirtualItems();
         List<VirtualItem> expectedVirtualItems = List.of(
                 new VirtualItem("Windows", 11.0, 20000.0));
-        String expectedName = cart.getCartName();
-        String actualName = "test-cart";
 
         double actualPrice = cart.getTotalPrice();
-        double expectedPrice = 38445.479999999996;
+        double expectedPrice = 76864.56;
         System.out.println(actualRealItems + "\n" + expectedRealItems);
 
         assertAll(
                 "Cart created successfully if",
                 () -> Assert.assertEquals(expectedRealItems.size(), actualRealItems.size()),
                 () -> Assert.assertEquals(actualVirtualItems.size(), expectedVirtualItems.size()),
-                () -> Assert.assertEquals(expectedName, actualName),
                 () -> Assert.assertEquals(actualPrice, expectedPrice)
         );
     }
 
     @Test
     @DisplayName("Test getCartName functionality")
-    void getCartName_TestCart1() {
-        Cart cart = new Cart("TestCart1");
+    void getCartName_TestCart() {
+        Cart cart = new Cart("TestCart");
         String expectedResult = "TestCart1";
 
         String actualResult = cart.getCartName();

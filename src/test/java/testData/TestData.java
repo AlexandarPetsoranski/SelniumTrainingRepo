@@ -10,16 +10,8 @@ public class TestData {
 
     public static Cart createTestCart(){
         Cart testCart = new Cart(generateRandomString());
-        RealItem testRealItem = new RealItem();
-        VirtualItem testVirtualItem = new VirtualItem();
-        testRealItem.setName("Audi");
-        testRealItem.setPrice(32026.9);
-        testRealItem.setWeight(1560.0);
-
-        testVirtualItem.setName("Windows");
-        testVirtualItem.setPrice(11.0);
-        testVirtualItem.setSizeOnDisk(20000.0);
-
+        RealItem testRealItem = createRealItem();
+        VirtualItem testVirtualItem = createVirtualItem();
         testCart.addRealItem(testRealItem);
         testCart.addVirtualItem(testVirtualItem);
         return testCart;

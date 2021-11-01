@@ -17,8 +17,6 @@ public class Cart {
         virtualItems = new ArrayList<>();
     }
 
-    public Cart(){}
-
     public List<RealItem> getRealItems() {
         return realItems;
     }
