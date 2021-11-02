@@ -39,12 +39,12 @@ public class CartTest extends BaseSpec {
     @Test
     @DisplayName("Test getCartName functionality")
     void getCartName_TestCart() {
-        Cart cart = new Cart("TestCart");
-        String expectedResult = "TestCart1";
+        String expectedCartName  = TestData.generateRandomString();
+        Cart cart = new Cart(expectedCartName );
 
         String actualResult = cart.getCartName();
 
-        Assert.assertEquals(actualResult, expectedResult);
+        Assert.assertEquals(actualResult, expectedCartName);
     }
 
     @Test
