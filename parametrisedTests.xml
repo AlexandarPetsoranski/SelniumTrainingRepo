@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parametrised test">
+    <parameter name="no such file" value="src/main/resources/NoSuchFile.file"/>
+    <parameter name="no file extension" value="src/main/resources/NoSuchFile"/>
+    <parameter name="empty string" value=""/>
+    <parameter name="space symbol string" value=" "/>
+    <parameter name="xml file" value="src/main/resources/andrew-cart.xml"/>
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/alexandarpetsoranski/IdeaProjects/SelniumTrainingRepo/src/test/java/JsonParserTests.java">
+        <classes>
+            <class name="JsonParserTests">
+                <methods>
+                    <include name="passWrongFileToReadFromFile_NoSuchFileExceptionPresented"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
+
+
