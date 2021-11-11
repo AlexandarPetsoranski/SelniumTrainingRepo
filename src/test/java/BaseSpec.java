@@ -1,6 +1,5 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeMethod;
 import parser.JsonParser;
 import parser.Parser;
 import shop.RealItem;
@@ -12,14 +11,14 @@ public class BaseSpec {
     VirtualItem virtualItem;
 
 
-    @BeforeEach
+    @BeforeMethod
     void setUp(){
          parser = new JsonParser();
          realItem = new RealItem();
          virtualItem = new VirtualItem();
     }
 
-    @AfterAll
+    @AfterClass
     static void close(){
         System.out.println("Test execution finished successfully");
     }
