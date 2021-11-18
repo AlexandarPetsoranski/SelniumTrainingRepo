@@ -1,27 +1,32 @@
 package Pages;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import projectVeriables.ProjectVeriables;
 
+@Getter
+@Setter
 public class LogInPage {
 
-    WebDriver driver;
+    final WebDriver driver;
 
     public LogInPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    By enterYourIDinput = By.id("passp-field-login");
-    By logInButton = By.id("passp:sign-in");
-    By enterPasswordInput = By.id("passp-field-passwd");
+    private By enterYourIDinput = By.id("passp-field-login");
+    private By logInButton = By.id("passp:sign-in");
+    private By enterPasswordInput = By.id("passp-field-passwd");
 
 
-    public void logIn() {
+    public MailPage logIn() {
         driver.findElement(enterYourIDinput).sendKeys(ProjectVeriables.PHONE_NUMBER);
         driver.findElement(logInButton).click();
         driver.findElement(enterPasswordInput).sendKeys(ProjectVeriables.PASSWORD);
         driver.findElement(logInButton).click();
+        return new MailPage(driver);
 
     }
 }
