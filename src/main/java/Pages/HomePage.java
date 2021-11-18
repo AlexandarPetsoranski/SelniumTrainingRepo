@@ -18,8 +18,7 @@ public class HomePage {
     private By HomePageTitle = By.xpath("//div[@class=\"HeadBanner-Title\"]");
     private By CreateAccountButton = By.xpath("//div[@class=\"HeadBanner-ButtonsWrapper\"]/a[1]");
     private By LogInButton = By.xpath("//div[@class=\"HeadBanner-ButtonsWrapper\"]/a[2]");
-    private By acceptCoockies = By.xpath("//button[@data-id=\"button-all\"]");
-
+    private By acceptCookies = By.xpath("//button[@data-id=\"button-all\"]");
 
     public LogInPage clickOnLogInButton() {
         driver.findElement(LogInButton).click();

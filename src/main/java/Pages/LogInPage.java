@@ -16,17 +16,16 @@ public class LogInPage {
         this.driver = driver;
     }
 
-    private By enterYourIDinput = By.id("passp-field-login");
+    private By enterYourIDInput = By.id("passp-field-login");
     private By logInButton = By.id("passp:sign-in");
     private By enterPasswordInput = By.id("passp-field-passwd");
 
 
     public MailPage logIn() {
-        driver.findElement(enterYourIDinput).sendKeys(ProjectVeriables.PHONE_NUMBER);
+        driver.findElement(enterYourIDInput).sendKeys(ProjectVeriables.PHONE_NUMBER);
         driver.findElement(logInButton).click();
         driver.findElement(enterPasswordInput).sendKeys(ProjectVeriables.PASSWORD);
         driver.findElement(logInButton).click();
         return new MailPage(driver);
-
     }
 }

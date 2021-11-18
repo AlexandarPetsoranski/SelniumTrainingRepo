@@ -23,7 +23,7 @@ public class CreateAccountPage {
     private By phoneNumberInput = By.id("phone");
     private By registerButton = By.xpath("//button[@type=\"submit\"]");
 
-    public void createAccount(){
+    public MailPage createAccount() {
         driver.findElement(firstNameInput).sendKeys(ProjectVeriables.FIRST_NAME);
         driver.findElement(lastNameInput).sendKeys(ProjectVeriables.LAST_NAME);
         driver.findElement(enterLoginInput).sendKeys(ProjectVeriables.USER_NAME);
@@ -31,6 +31,6 @@ public class CreateAccountPage {
         driver.findElement(confirmPasswordInput).sendKeys(ProjectVeriables.PASSWORD);
         driver.findElement(phoneNumberInput).sendKeys(ProjectVeriables.PHONE_NUMBER);
         driver.findElement(registerButton).click();
-
+        return new MailPage(driver);
     }
 }
