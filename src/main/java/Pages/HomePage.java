@@ -21,11 +21,6 @@ public class HomePage {
     private By acceptCoockies = By.xpath("//button[@data-id=\"button-all\"]");
 
 
-    public HomePage acceptCoockies() {
-        driver.findElement(acceptCoockies).click();
-        return new HomePage(driver);
-    }
-
     public LogInPage clickOnLogInButton() {
         driver.findElement(LogInButton).click();
         return new LogInPage(driver);

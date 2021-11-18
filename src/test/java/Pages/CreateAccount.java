@@ -21,14 +21,9 @@ public class CreateAccount extends BaseSpec {
     @Test
     public void LogIn_UserLogSuccessfully() {
         homePage = new HomePage(driver);
-        homePage.acceptCoockies();
+        logInPage = homePage.clickOnLogInButton();
+        mailPage = logInPage.logIn();
 
-        homePage.clickOnLogInButton();
-
-        logInPage = new LogInPage(driver);
-        logInPage.logIn();
-
-        mailPage = new MailPage(driver);
         boolean yandexLogoDisplayed = driver.findElement(mailPage.getYandexLogo()).isEnabled();
 
         Assertions.assertTrue(yandexLogoDisplayed);
