@@ -12,14 +12,14 @@ public class CreateAccount extends BaseSpec {
     MailPage mailPage;
 
     @Test
-    public void NavigateToYandexHomePage_YandexHomePagePresented() {
+    public void verifyYandexHomePage() {
         String ExpectedPageTitle = "Yandex.Mail — free, reliable email";
 
         Assertions.assertEquals(driver.getTitle(), ExpectedPageTitle);
     }
 
     @Test
-    public void LogIn_UserLogSuccessfully() {
+    public void verifyUserCanLogInSuccessfully() {
         homePage = new HomePage(driver);
         logInPage = homePage.clickOnLogInButton();
         mailPage = logInPage.logIn();
