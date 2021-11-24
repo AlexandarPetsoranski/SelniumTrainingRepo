@@ -15,22 +15,22 @@ public class CreateAccountPage {
         this.driver = driver;
     }
 
-    private By firstNameInput = By.id("firstname");
-    private By lastNameInput = By.cssSelector("#lastname");
-    private By enterLoginInput = By.xpath("//input[@id='login']");
-    private By passwordInput = By.name("password");
-    private By confirmPasswordInput = By.id("password_confirm");
-    private By phoneNumberInput = By.id("phone");
-    private By registerButton = By.xpath("//button[@type=\"submit\"]");
+    private static final By FIRST_NAME_INPUT = By.id("firstname");
+    private static final By LAST_NAME_INPUT = By.cssSelector("#lastname");
+    private static final By ENTER_LOGIN_INPUT = By.xpath("//input[@id='login']");
+    private static final By PASSWORD_INPUT = By.name("password");
+    private static final By CONFIRM_PASSWORD_INPUT = By.id("password_confirm");
+    private static final By PHONE_NUMBER_INPUT = By.id("phone");
+    private static final By REGISTER_BUTTON = By.xpath("//button[@type=\"submit\"]");
 
     public MailPage createAccount() {
-        driver.findElement(firstNameInput).sendKeys(ProjectVeriables.FIRST_NAME);
-        driver.findElement(lastNameInput).sendKeys(ProjectVeriables.LAST_NAME);
-        driver.findElement(enterLoginInput).sendKeys(ProjectVeriables.USER_NAME);
-        driver.findElement(passwordInput).sendKeys(ProjectVeriables.PASSWORD);
-        driver.findElement(confirmPasswordInput).sendKeys(ProjectVeriables.PASSWORD);
-        driver.findElement(phoneNumberInput).sendKeys(ProjectVeriables.PHONE_NUMBER);
-        driver.findElement(registerButton).click();
+        driver.findElement(FIRST_NAME_INPUT).sendKeys(ProjectVeriables.FIRST_NAME);
+        driver.findElement(LAST_NAME_INPUT).sendKeys(ProjectVeriables.LAST_NAME);
+        driver.findElement(ENTER_LOGIN_INPUT).sendKeys(ProjectVeriables.USER_NAME);
+        driver.findElement(PASSWORD_INPUT).sendKeys(ProjectVeriables.PASSWORD);
+        driver.findElement(CONFIRM_PASSWORD_INPUT).sendKeys(ProjectVeriables.PASSWORD);
+        driver.findElement(PHONE_NUMBER_INPUT).sendKeys(ProjectVeriables.PHONE_NUMBER);
+        driver.findElement(REGISTER_BUTTON).click();
         return new MailPage(driver);
     }
 }
