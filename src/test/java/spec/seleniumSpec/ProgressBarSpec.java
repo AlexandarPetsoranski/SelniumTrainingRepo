@@ -20,20 +20,15 @@ public class ProgressBarSpec extends BaseSpec {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-        WebElement inputPercent = driver.findElement(stylishProgressBarPage.getPERCEMT_INPUT());
+        WebElement inputPercent = driver.findElement(stylishProgressBarPage.getPERCENT_INPUT());
         boolean isInvisible = wait.until(ExpectedConditions.invisibilityOf(inputPercent));
 
-        WebElement loadingBarText = driver.findElement(stylishProgressBarPage.getPERCENTAGE_CIRCLE());
-
         while (isInvisible){
-            String txt= loadingBarText.getText();
             int hiddenInputPercent = Integer.parseInt(inputPercent.getAttribute("value"));
-
-            if ( hiddenInputPercent>=50 | txt.equals("51")){
+            if ( hiddenInputPercent>=50){
                 break;
             }
         }
         driver.navigate().refresh();
-
     }
 }

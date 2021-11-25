@@ -11,7 +11,7 @@ public class StylishProgressBarPage {
 
     private final By DOWNLOAD_BUTTON = By.id("cricle-btn");
     private final By PERCENTAGE_CIRCLE = By.cssSelector(".percenttext");
-    private final By PERCEMT_INPUT = By.id("cricleinput");
+    private final By PERCENT_INPUT = By.id("cricleinput");
 
     public StylishProgressBarPage(WebDriver driver) {
         this.driver = driver;

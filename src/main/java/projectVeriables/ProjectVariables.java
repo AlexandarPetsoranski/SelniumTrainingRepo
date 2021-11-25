@@ -7,7 +7,7 @@ public class ProjectVariables {
     public static final String LAST_NAME = "Petsoranski";
     public static final String USER_NAME = "AlexanderPetsoranski";
     public static final String PASSWORD = "coherentSolutions!92";
-        public static final String PHONE_NUMBER = "+359886806048";
+    public static final String PHONE_NUMBER = "+359886806048";
 
     public static final String FIRST_NAME2 = "testUser";
     public static final String LAST_NAME2 = "testUser";

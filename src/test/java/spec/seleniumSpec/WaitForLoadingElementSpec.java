@@ -20,6 +20,7 @@ public class WaitForLoadingElementSpec extends BaseSpec {
 
         driver.findElement(loadingDataPage.getFIND_NEW_USER_BUTTON()).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(loadingDataPage.getUSER_INFORMATION()));
+
         Assertions.assertTrue(driver.findElement(loadingDataPage.getUSER_INFORMATION()).isEnabled());
     }
 }

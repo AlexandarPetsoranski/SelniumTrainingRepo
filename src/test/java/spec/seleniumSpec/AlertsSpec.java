@@ -19,6 +19,7 @@ public class AlertsSpec extends BaseSpec {
 
         driver.findElement(alertBoxesPage.getCLICK_ME_BUTTON()).click();
         driver.switchTo().alert().accept();
+
         Assertions.assertEquals(driver.findElement(alertBoxesPage.getCONFIRMATION_TEXT()).getText(), CONFIRMATION_ALERT_APPROVED);
     }
 
@@ -38,6 +39,7 @@ public class AlertsSpec extends BaseSpec {
         driver.findElement(alertBoxesPage.getCLICK_FOR_PROMT_TEXT_BUTTON()).click();
         driver.switchTo().alert().sendKeys(HELLO_TEXT);
         driver.switchTo().alert().accept();
+
         Assertions.assertEquals(driver.findElement(alertBoxesPage.getPROMT_CONFIRMATION_TEXT()).getText(), PROMT_CONFIRMATION_TEXT);
     }
 }

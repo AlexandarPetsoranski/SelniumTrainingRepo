@@ -20,12 +20,10 @@ import java.time.Duration;
 public class CreateAccount extends BaseSpec {
     private static final Logger logger = LoggerFactory.getLogger(CreateAccount.class);
     private static final String EXPECTED_TITLE = "Inbox () — Yandex.Mail";
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
     private HomePage homePage;
     private LogInPage logInPage;
     private MailPage mailPage;
-
 
     @Test
     public void verifyYandexHomePage() {
@@ -45,7 +43,8 @@ public class CreateAccount extends BaseSpec {
         Thread.sleep(1000);
 
         mailPage.switchToLightVersion();
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".b-pseudo-link")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.presenceOfElementLocated(mailPage.getCUSTOMER_NAME()));
 
         Assertions.assertEquals(driver.getTitle(), EXPECTED_TITLE);
         logger.info("Yandex Logo is not displayed");
@@ -60,6 +59,5 @@ public class CreateAccount extends BaseSpec {
         mailPage = logInPage.logIn(login, pass);
 
         Assertions.assertEquals(driver.getTitle(), EXPECTED_TITLE);
-
     }
 }
