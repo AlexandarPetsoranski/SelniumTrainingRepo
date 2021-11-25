@@ -1,10 +1,9 @@
-package Pages;
+package pages.yandex;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import projectVeriables.ProjectVeriables;
 
 @Getter
 @Setter
@@ -21,11 +20,12 @@ public class LogInPage {
     private static final By ENTER_PASSWORD_INPUT = By.id("passp-field-passwd");
 
 
-    public MailPage logIn() {
-        driver.findElement(ENTER_YOUR_ID_INPUT).sendKeys(ProjectVeriables.PHONE_NUMBER);
+    public MailPage logIn(String userName, String password) {
+        driver.findElement(ENTER_YOUR_ID_INPUT).sendKeys(userName);
         driver.findElement(LOG_IN_BUTTON).click();
-        driver.findElement(ENTER_PASSWORD_INPUT).sendKeys(ProjectVeriables.PASSWORD);
+        driver.findElement(ENTER_PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOG_IN_BUTTON).click();
         return new MailPage(driver);
     }
+
 }

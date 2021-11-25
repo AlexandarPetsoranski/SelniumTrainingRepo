@@ -1,9 +1,10 @@
-package Pages;
+package pages.yandex;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import projectVeriables.ProjectVariables;
 
 @Getter
 @Setter
@@ -12,6 +13,8 @@ public class HomePage {
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+        this.driver.get(ProjectVariables.MAIN_URL);
+
     }
 
     private static final By HOME_PAGE_TITLE = By.xpath("//div[@class=\"HeadBanner-Title\"]");

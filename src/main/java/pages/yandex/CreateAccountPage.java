@@ -1,10 +1,10 @@
-package Pages;
+package pages.yandex;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import projectVeriables.ProjectVeriables;
+import projectVeriables.ProjectVariables;
 
 @Getter
 @Setter
@@ -24,12 +24,12 @@ public class CreateAccountPage {
     private static final By REGISTER_BUTTON = By.xpath("//button[@type=\"submit\"]");
 
     public MailPage createAccount() {
-        driver.findElement(FIRST_NAME_INPUT).sendKeys(ProjectVeriables.FIRST_NAME);
-        driver.findElement(LAST_NAME_INPUT).sendKeys(ProjectVeriables.LAST_NAME);
-        driver.findElement(ENTER_LOGIN_INPUT).sendKeys(ProjectVeriables.USER_NAME);
-        driver.findElement(PASSWORD_INPUT).sendKeys(ProjectVeriables.PASSWORD);
-        driver.findElement(CONFIRM_PASSWORD_INPUT).sendKeys(ProjectVeriables.PASSWORD);
-        driver.findElement(PHONE_NUMBER_INPUT).sendKeys(ProjectVeriables.PHONE_NUMBER);
+        driver.findElement(FIRST_NAME_INPUT).sendKeys(ProjectVariables.FIRST_NAME);
+        driver.findElement(LAST_NAME_INPUT).sendKeys(ProjectVariables.LAST_NAME);
+        driver.findElement(ENTER_LOGIN_INPUT).sendKeys(ProjectVariables.USER_NAME);
+        driver.findElement(PASSWORD_INPUT).sendKeys(ProjectVariables.PASSWORD);
+        driver.findElement(CONFIRM_PASSWORD_INPUT).sendKeys(ProjectVariables.PASSWORD);
+        driver.findElement(PHONE_NUMBER_INPUT).sendKeys(ProjectVariables.PHONE_NUMBER);
         driver.findElement(REGISTER_BUTTON).click();
         return new MailPage(driver);
     }
