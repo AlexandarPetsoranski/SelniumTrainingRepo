@@ -18,8 +18,8 @@ public class HomePage {
     }
 
     private static final By HOME_PAGE_TITLE = By.xpath("//div[@class=\"HeadBanner-Title\"]");
-    private static final By CREATE_ACCOUNT_BUTTON = By.xpath("//div[@class=\"HeadBanner-ButtonsWrapper\"]/a[1]");
-    private static final By LOG_IN_BUTTON = By.xpath("//div[@class=\"HeadBanner-ButtonsWrapper\"]/a[2]");
+    private static final By CREATE_ACCOUNT_BUTTON = By.xpath("//div[@class='HeadBanner-ButtonsWrapper']/a/span[contains(text(),'Create an account')]");
+    private static final By LOG_IN_BUTTON = By.className("HeadBanner-Button-Enter");
     private static final By ACCEPT_COOKIES = By.xpath("//button[@data-id=\"button-all\"]");
 
     public LogInPage clickOnLogInButton() {

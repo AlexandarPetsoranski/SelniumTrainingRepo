@@ -2,15 +2,19 @@ package spec.seleniumSpec;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pages.seleniumTraining.LoadingDataPage;
 import spec.BaseSpec;
+import spec.yandexSpec.CreateAccount;
 
 import java.time.Duration;
 
 public class WaitForLoadingElementSpec extends BaseSpec {
+    private static final Logger logger = LoggerFactory.getLogger(WaitForLoadingElementSpec.class);
+
     private LoadingDataPage loadingDataPage;
 
     @Test
@@ -22,5 +26,6 @@ public class WaitForLoadingElementSpec extends BaseSpec {
         wait.until(ExpectedConditions.presenceOfElementLocated(loadingDataPage.getUSER_INFORMATION()));
 
         Assertions.assertTrue(driver.findElement(loadingDataPage.getUSER_INFORMATION()).isEnabled());
+        logger.info("User Name is not presented");
     }
 }

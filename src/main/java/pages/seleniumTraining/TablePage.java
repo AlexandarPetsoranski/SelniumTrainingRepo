@@ -58,14 +58,10 @@ public class TablePage {
                 String salarySubstring = customerSalary.substring(customerSalary.indexOf('$') + 1,
                         customerSalary.indexOf('/')).replace(',', '.');
 
-                double salaryFormatted;
-                if (salarySubstring.length() > 7) {
-                    salaryFormatted = Double.parseDouble((salarySubstring.replace(".", "")));
-                } else {
-                    salaryFormatted = Double.parseDouble((salarySubstring));
-                }
+                double salaryFormattedValue = (salarySubstring.length() > 7) ?
+                        Double.parseDouble((salarySubstring.replace(".", ""))) : Double.parseDouble((salarySubstring));
 
-                if (customerAge > age && salaryFormatted <= salary) {
+                if (customerAge > age && salaryFormattedValue <= salary) {
                     Customer customer = new Customer(
                             columns.get(0).getText(),
                             columns.get(1).getText(),

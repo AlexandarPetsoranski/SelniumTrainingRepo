@@ -1,17 +1,16 @@
 package spec.yandexSpec;
 
-import pages.yandex.HomePage;
-import pages.yandex.LogInPage;
-import pages.yandex.MailPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pages.yandex.HomePage;
+import pages.yandex.LogInPage;
+import pages.yandex.MailPage;
 import projectVeriables.ProjectVariables;
 import spec.BaseSpec;
 
@@ -44,6 +43,7 @@ public class CreateAccount extends BaseSpec {
 
         mailPage.switchToLightVersion();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.pollingEvery(Duration.ofSeconds(1));
         wait.until(ExpectedConditions.presenceOfElementLocated(mailPage.getCUSTOMER_NAME()));
 
         Assertions.assertEquals(driver.getTitle(), EXPECTED_TITLE);

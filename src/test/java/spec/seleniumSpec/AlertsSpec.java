@@ -10,8 +10,8 @@ public class AlertsSpec extends BaseSpec {
 
     private static final String CONFIRMATION_ALERT_DISMISSED = "You pressed Cancel!";
     private static final String CONFIRMATION_ALERT_APPROVED = "You pressed OK!";
-    private static final String HELLO_TEXT = "hello";
-    private static final String PROMT_CONFIRMATION_TEXT = "You have entered 'hello' !";
+    private static final String HELLO_TEXT = "HELLO_TEXT";
+    private static final String PROMT_CONFIRMATION_TEXT = "You have entered 'HELLO_TEXT' !";
 
     @Test
     public void acceptConfirmationAlert() {
