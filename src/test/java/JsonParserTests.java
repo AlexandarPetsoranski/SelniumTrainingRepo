@@ -1,6 +1,7 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -18,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class JsonParserTests extends BaseSpec {
     ObjectMapper mapper = new ObjectMapper();
+
 
     @Test
     void writeToFileSuccessfullyCreatesJsonFile() throws IOException {
@@ -55,9 +57,14 @@ public class JsonParserTests extends BaseSpec {
         System.out.println(test);
     }
 
+    @DataProvider (name = "data-provider")
+    public Object[][] dataProviderMethod(){
+        return new Object[][] {{"No such file"}, {"src/main/resources/NoSuchFile.file"}};
+    }
+
     @Parameters({"Wrong File Passed"})
-    @Test
-    void passWrongFileToReadFromFile_NoSuchFileExceptionPresented(String input) {
+    @Test (dataProvider = "dataProviderMethod")
+    public void passWrongFileToReadFromFile_NoSuchFileExceptionPresented(String input) {
         assertThrows(NoSuchFileException.class, () -> {
             parser.readFromFile(new File(String.valueOf(input)));
         });

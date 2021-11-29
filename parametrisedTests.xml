@@ -7,7 +7,7 @@
     <parameter name="space symbol string" value=" "/>
     <parameter name="xml file" value="src/main/resources/andrew-cart.xml"/>
     <test verbose="2" preserve-order="true"
-          name="C:/Users/alexandarpetsoranski/IdeaProjects/SelniumTrainingRepo/src/test/java/JsonParserTests.java">
+          name="src/test/java/JsonParserTests.java">
         <classes>
             <class name="JsonParserTests">
                 <methods>
@@ -16,7 +16,6 @@
             </class>
         </classes>
     </test>
-
 </suite>
 
 

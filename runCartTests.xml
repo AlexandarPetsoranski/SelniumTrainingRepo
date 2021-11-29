@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Cart Tests">
     <test verbose="2" preserve-order="true"
-          name="C:/Users/alexandarpetsoranski/IdeaProjects/SelniumTrainingRepo/src/test/java/CartTest.java">
+          name="src/test/java/CartTest.java">
         <classes>
             <class
                     name="CartTest">
