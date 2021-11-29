@@ -57,7 +57,7 @@ public class JsonParserTests extends BaseSpec {
         System.out.println(test);
     }
 
-    @DataProvider (name = "data-provider")
+    @DataProvider (name = "dataProviderMethod")
     public Object[][] dataProviderMethod(){
         return new Object[][] {{"No such file"}, {"src/main/resources/NoSuchFile.file"}};
     }
