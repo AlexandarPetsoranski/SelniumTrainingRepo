@@ -1,20 +1,16 @@
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import shop.Cart;
 import shop.RealItem;
 import shop.VirtualItem;
 import testData.TestData;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class CartTest extends BaseSpec {
 
 
     @Test
-    @DisplayName("Test cart is created successfully")
     void givenMultipleAssertionWhenAssertingAllThenOK() {
         Cart cart = TestData.createTestCart();
         List<RealItem> actualRealItems = cart.getRealItems();
@@ -37,7 +33,6 @@ public class CartTest extends BaseSpec {
     }
 
     @Test
-    @DisplayName("Test getCartName functionality")
     void getCartName_TestCart() {
         String expectedCartName  = TestData.generateRandomString();
         Cart cart = new Cart(expectedCartName );
@@ -48,10 +43,9 @@ public class CartTest extends BaseSpec {
     }
 
     @Test
-    @DisplayName("Test getTotalPrice functionality")
     void getTotalPrice_priceFromAllVirtualAndRealItems() {
         Cart cart = TestData.createTestCart();
-        double expectedPrice = 38445.479999999996;
+        double expectedPrice = 76864.56;
 
         double actualPrice = cart.getTotalPrice();
 
