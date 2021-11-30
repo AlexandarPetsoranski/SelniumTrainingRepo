@@ -28,19 +28,17 @@ public class MultiSelectSpec extends BaseSpec {
                 .boxed()
                 .collect(Collectors.toList());
 
-        List<String> actualList = new ArrayList<>();
+        List<String> expectedList = new ArrayList<>();
         if (multiSelect.isMultiple()) {
             for (Integer index : number) {
                 multiSelect.selectByIndex(index);
                 Select select = new Select(driver.findElement(selectPage.getMULTISELECT()));
-                actualList = select.getAllSelectedOptions().stream().map(WebElement::getText).collect(Collectors.toList());
+                expectedList = select.getAllSelectedOptions().stream().map(WebElement::getText).collect(Collectors.toList());
             }
         }
 
-        List<String> expectedOptions = multiSelect.getAllSelectedOptions().stream().map(WebElement::getText).collect(Collectors.toList());
-        System.out.println(expectedOptions);
-        System.out.println(actualList);
+        List<String> actualList = multiSelect.getAllSelectedOptions().stream().map(WebElement::getText).collect(Collectors.toList());
 
-        Assertions.assertEquals(expectedOptions, actualList);
+        Assertions.assertEquals(actualList, expectedList);
     }
 }
