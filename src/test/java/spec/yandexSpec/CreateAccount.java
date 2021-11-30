@@ -1,11 +1,11 @@
 package spec.yandexSpec;
 
-import helperClasses.SingletonBrowserClass;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,10 +27,11 @@ public class CreateAccount extends BaseSpec {
 
     @Test
     public void verifyYandexHomePage() {
-        homePage = new HomePage(driver);
-        String ExpectedPageTitle = "Yandex.Mail — free, reliable email";
+        WebDriver driver = new ChromeDriver();
 
-        Assertions.assertEquals(driver.getTitle(), ExpectedPageTitle);
+        homePage = new HomePage(driver);
+
+        Assertions.assertTrue(driver.getTitle().contains(EXPECTED_TITLE));
     }
 
     @Test
@@ -50,6 +51,8 @@ public class CreateAccount extends BaseSpec {
 
     @Test
     public void verifyUserLogOutSuccessfully() {
+        WebDriver driver = new ChromeDriver();
+
         verifyUserCanLogInSuccessfully();
         mailPage.logOut();
 

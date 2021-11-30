@@ -6,28 +6,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
 public class BaseSpec {
-    SingletonBrowserClass singletonBrowserClass = SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
-    protected WebDriver driver = null;
+    protected static WebDriver driver;
 
     @BeforeEach
-     void setup() {
-        SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
-        this.driver = singletonBrowserClass.getDriver();
+    void setup() {
+        SingletonBrowserClass singletonBrowserClass = SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
+        driver = singletonBrowserClass.getDriver();
     }
 
     @AfterEach
-    void cleanup() {
+     void cleanup(){
         driver.quit();
         driver = null;
     }
-
-/*     @BeforeEach
-     void setup() {
-         GetDriver.initialize();
-    }
-
-    @AfterEach
-    void cleanup() {
-        GetDriver.quit();
-    }*/
 }
