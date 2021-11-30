@@ -3,6 +3,7 @@ package projectVeriables;
 public class ProjectVariables {
 
     public static final String MAIN_URL = "https://mail.yandex.com";
+
     public static final String FIRST_NAME = "Alexander";
     public static final String LAST_NAME = "Petsoranski";
     public static final String USER_NAME = "AlexanderPetsoranski";

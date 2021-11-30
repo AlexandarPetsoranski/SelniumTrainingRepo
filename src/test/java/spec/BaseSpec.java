@@ -1,26 +1,33 @@
 package spec;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import helperClasses.SingletonBrowserClass;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.time.Duration;
 
 public class BaseSpec {
-    public WebDriver driver;
+    SingletonBrowserClass singletonBrowserClass = SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
+    protected WebDriver driver = null;
 
     @BeforeEach
-    void setup(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+     void setup() {
+        SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
+        this.driver = singletonBrowserClass.getDriver();
     }
 
     @AfterEach
-    void cleanup(){
+    void cleanup() {
         driver.quit();
+        driver = null;
     }
+
+/*     @BeforeEach
+     void setup() {
+         GetDriver.initialize();
+    }
+
+    @AfterEach
+    void cleanup() {
+        GetDriver.quit();
+    }*/
 }
