@@ -42,5 +42,4 @@ public class MailPage {
         LOG_OUT_LINK.click();
         return new MailPage(driver);
     }
-
 }
