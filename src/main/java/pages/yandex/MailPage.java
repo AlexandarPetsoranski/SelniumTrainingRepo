@@ -12,6 +12,7 @@ public class MailPage {
     private static final By WRITE_EMAIL = By.xpath("//i[contains(text(),'Compose')]");
     private static final By LIGHT_VERSION_BUTTON = By.cssSelector("span.mail-App-Footer-Item.mail-App-Footer-Item_lite");
     private final By CUSTOMER_NAME = By.cssSelector(".b-pseudo-link");
+    private static final By LOG_OUT_LINK = By.cssSelector("a.b-header__link_exit");
 
     final WebDriver driver;
 
@@ -24,4 +25,8 @@ public class MailPage {
         return new MailPage(driver);
     }
 
+    public MailPage logOut(){
+        driver.findElement(LOG_OUT_LINK).click();
+        return new MailPage(driver);
+    }
 }

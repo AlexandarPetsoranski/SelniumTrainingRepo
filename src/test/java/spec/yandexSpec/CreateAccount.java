@@ -18,7 +18,6 @@ import java.time.Duration;
 
 public class CreateAccount extends BaseSpec {
     private static final Logger logger = LoggerFactory.getLogger(CreateAccount.class);
-    private static final String EXPECTED_TITLE = "Inbox () — Yandex.Mail";
 
     private HomePage homePage;
     private LogInPage logInPage;
@@ -26,38 +25,42 @@ public class CreateAccount extends BaseSpec {
 
     @Test
     public void verifyYandexHomePage() {
-        String ExpectedPageTitle = "Yandex.Mail — free, reliable email";
+        homePage = new HomePage(driver);
 
-        Assertions.assertEquals(driver.getTitle(), ExpectedPageTitle);
+        Assertions.assertTrue(driver.getTitle().contains(ProjectVariables.EXPECTED_TITLE));
     }
 
     @Test
-    public void verifyUserCanLogInSuccessfully() throws InterruptedException {
+    public void verifyUserCanLogInSuccessfully() {
         homePage = new HomePage(driver);
         logInPage = homePage.clickOnLogInButton();
         mailPage = logInPage.logIn(ProjectVariables.PHONE_NUMBER, ProjectVariables.PASSWORD);
-
-        //Sleep is neither implicit nor explicit wait. It is way of controlling the test flow
-        //by freezing the code execution for certain amount of time
-        Thread.sleep(1000);
 
         mailPage.switchToLightVersion();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.pollingEvery(Duration.ofSeconds(1));
         wait.until(ExpectedConditions.presenceOfElementLocated(mailPage.getCUSTOMER_NAME()));
 
-        Assertions.assertEquals(driver.getTitle(), EXPECTED_TITLE);
+        Assertions.assertTrue(driver.getTitle().contains(ProjectVariables.EXPECTED_TITLE));
         logger.info("Yandex Logo is not displayed");
+    }
+
+    @Test
+    public void verifyUserLogOutSuccessfully() {
+        verifyUserCanLogInSuccessfully();
+        mailPage.logOut();
+
+        Assertions.assertEquals(driver.getCurrentUrl(), ProjectVariables.YANDEX_URL);
     }
 
     @ParameterizedTest
     @CsvSource({"+359886806048, coherentSolutions!92",
-                "t.te5tuser,    coherentSolutions!92"})
+            "t.te5tuser,    coherentSolutions!92"})
     public void logInWithDifferentCredentials(String login, String pass) {
         homePage = new HomePage(driver);
         logInPage = homePage.clickOnLogInButton();
         mailPage = logInPage.logIn(login, pass);
 
-        Assertions.assertEquals(driver.getTitle(), EXPECTED_TITLE);
+        Assertions.assertTrue(driver.getTitle().contains(ProjectVariables.MAIL_PAGE_TITLE) );
     }
 }
