@@ -7,16 +7,16 @@ import org.openqa.selenium.WebDriver;
 
 public class BaseSpec {
     protected static WebDriver driver;
+    SingletonBrowserClass singletonBrowserClass = null;
 
     @BeforeEach
     void setup() {
-        SingletonBrowserClass singletonBrowserClass = SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
+        singletonBrowserClass = SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
         driver = singletonBrowserClass.getDriver();
     }
 
     @AfterEach
-     void cleanup(){
-        driver.quit();
-        driver = null;
+    void cleanup() {
+        singletonBrowserClass.closeDriver();
     }
 }

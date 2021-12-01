@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,19 +17,16 @@ import java.time.Duration;
 
 public class CreateAccount extends BaseSpec {
     private static final Logger logger = LoggerFactory.getLogger(CreateAccount.class);
-    private static final String EXPECTED_TITLE = "Yandex.Mail";
-    private static final String YANDEX_URL = "https://yandex.com/";
+
     private HomePage homePage;
     private LogInPage logInPage;
     private MailPage mailPage;
 
     @Test
     public void verifyYandexHomePage() {
-        WebDriver driver = new ChromeDriver();
-
         homePage = new HomePage(driver);
 
-        Assertions.assertTrue(driver.getTitle().contains(EXPECTED_TITLE));
+        Assertions.assertTrue(driver.getTitle().contains(ProjectVariables.EXPECTED_TITLE));
     }
 
     @Test
@@ -45,20 +40,17 @@ public class CreateAccount extends BaseSpec {
         wait.pollingEvery(Duration.ofSeconds(1));
         //wait.until(ExpectedConditions.presenceOfElementLocated(mailPage.getCUSTOMER_NAME()));
 
-        Assertions.assertTrue(driver.getTitle().contains(EXPECTED_TITLE));
+        Assertions.assertTrue(driver.getTitle().contains(ProjectVariables.EXPECTED_TITLE));
         logger.info("Yandex Logo is not displayed");
     }
 
     @Test
     public void verifyUserLogOutSuccessfully() {
-        WebDriver driver = new ChromeDriver();
-
         verifyUserCanLogInSuccessfully();
         mailPage.logOut();
 
-        Assertions.assertEquals(driver.getCurrentUrl(), YANDEX_URL);
+        Assertions.assertEquals(driver.getCurrentUrl(), ProjectVariables.YANDEX_URL);
     }
-
 
     @ParameterizedTest
     @CsvSource({"+359886806048, coherentSolutions!92",
@@ -68,6 +60,6 @@ public class CreateAccount extends BaseSpec {
         logInPage = homePage.clickOnLogInButton();
         mailPage = logInPage.logIn(login, pass);
 
-        Assertions.assertTrue(driver.getTitle().contains(EXPECTED_TITLE) );
+        Assertions.assertTrue(driver.getTitle().contains(ProjectVariables.MAIL_PAGE_TITLE) );
     }
 }
