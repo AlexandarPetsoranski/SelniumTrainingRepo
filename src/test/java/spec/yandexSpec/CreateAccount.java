@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -14,6 +16,8 @@ import pages.yandex.MailPage;
 import projectVeriables.ProjectVariables;
 import spec.BaseSpec;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
 public class CreateAccount extends BaseSpec {
@@ -24,15 +28,17 @@ public class CreateAccount extends BaseSpec {
     private MailPage mailPage;
 
     @Test
-    public void verifyYandexHomePage() {
+    public void verifyYandexHomePage() throws IOException {
         homePage = new HomePage(driver);
-
+        takeScreenShot("YandexHomePage");
         Assertions.assertTrue(driver.getTitle().contains(ProjectVariables.EXPECTED_TITLE));
     }
 
     @Test
-    public void verifyUserCanLogInSuccessfully() {
+    public void verifyUserCanLogInSuccessfully() throws IOException {
         homePage = new HomePage(driver);
+        takeScreenShot("YandexHomePage");
+
         logInPage = homePage.clickOnLogInButton();
         mailPage = logInPage.logIn(ProjectVariables.PHONE_NUMBER, ProjectVariables.PASSWORD);
 
@@ -46,7 +52,7 @@ public class CreateAccount extends BaseSpec {
     }
 
     @Test
-    public void verifyUserLogOutSuccessfully() {
+    public void verifyUserLogOutSuccessfully() throws IOException {
         verifyUserCanLogInSuccessfully();
         mailPage.logOut();
 
@@ -56,8 +62,9 @@ public class CreateAccount extends BaseSpec {
     @ParameterizedTest
     @CsvSource({"+359886806048, coherentSolutions!92",
             "t.te5tuser,    coherentSolutions!92"})
-    public void logInWithDifferentCredentials(String login, String pass) {
+    public void logInWithDifferentCredentials(String login, String pass) throws IOException {
         homePage = new HomePage(driver);
+        takeScreenShot("YandexHomePage");
         logInPage = homePage.clickOnLogInButton();
         mailPage = logInPage.logIn(login, pass);
 
