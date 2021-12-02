@@ -2,8 +2,10 @@ package pages.yandex;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import projectVeriables.ProjectVariables;
 
 @Getter
@@ -11,19 +13,26 @@ import projectVeriables.ProjectVariables;
 public class HomePage {
     final WebDriver driver;
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-        this.driver.get(ProjectVariables.MAIN_URL);
+    @FindBy(xpath="//div[@class=\"HeadBanner-Title\"]")
+    private static WebElement HOME_PAGE_TITLE;
 
-    }
+    @FindBy(xpath ="//div[@class='HeadBanner-ButtonsWrapper']/a/span[contains(text(),'Create an account')]" )
+    private static  WebElement CREATE_ACCOUNT_BUTTON;
 
-    private static final By HOME_PAGE_TITLE = By.xpath("//div[@class=\"HeadBanner-Title\"]");
-    private static final By CREATE_ACCOUNT_BUTTON = By.xpath("//div[@class='HeadBanner-ButtonsWrapper']/a/span[contains(text(),'Create an account')]");
-    private static final By LOG_IN_BUTTON = By.className("HeadBanner-Button-Enter");
-    private static final By ACCEPT_COOKIES = By.xpath("//button[@data-id=\"button-all\"]");
+    @FindBy(className="HeadBanner-Button-Enter")
+    private static WebElement LOG_IN_BUTTON;
+
+    @FindBy(xpath="//button[@data-id=\"button-all\"]")
+    private static WebElement ACCEPT_COOKIES;
 
     public LogInPage clickOnLogInButton() {
-        driver.findElement(LOG_IN_BUTTON).click();
+        LOG_IN_BUTTON.click();
         return new LogInPage(driver);
+    }
+
+    public HomePage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+        this.driver.get(ProjectVariables.MAIN_URL);
     }
 }
