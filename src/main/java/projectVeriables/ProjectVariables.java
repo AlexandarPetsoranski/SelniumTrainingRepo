@@ -15,4 +15,7 @@ public class ProjectVariables {
     public static final String PASSWORD2 = "coherentSolutions!92";
     public static final String PHONE_NUMBER2 = "+359886806048";
 
+    public static final String EXPECTED_TITLE = "Yandex.Mail";
+    public static final String YANDEX_URL = "https://yandex.com/";
+    public static final String MAIL_PAGE_TITLE = "Authorization";
 }
