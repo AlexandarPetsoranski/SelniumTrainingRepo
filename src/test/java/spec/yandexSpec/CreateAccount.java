@@ -14,6 +14,7 @@ import pages.yandex.MailPage;
 import projectVeriables.ProjectVariables;
 import spec.BaseSpec;
 
+import java.io.IOException;
 import java.time.Duration;
 
 public class CreateAccount extends BaseSpec {
@@ -25,15 +26,17 @@ public class CreateAccount extends BaseSpec {
     private MailPage mailPage;
 
     @Test
-    public void verifyYandexHomePage() {
+    public void verifyYandexHomePage() throws IOException {
         String ExpectedPageTitle = "Yandex.Mail — free, reliable email";
-
+        takeScreenShot("Yandex Home Page Screenshot");
         Assertions.assertEquals(driver.getTitle(), ExpectedPageTitle);
     }
 
     @Test
-    public void verifyUserCanLogInSuccessfully() throws InterruptedException {
+    public void verifyUserCanLogInSuccessfully() throws InterruptedException, IOException {
         homePage = new HomePage(driver);
+        takeScreenShot("Yandex Home Page Screenshot");
+
         logInPage = homePage.clickOnLogInButton();
         mailPage = logInPage.logIn(ProjectVariables.PHONE_NUMBER, ProjectVariables.PASSWORD);
 
@@ -53,8 +56,10 @@ public class CreateAccount extends BaseSpec {
     @ParameterizedTest
     @CsvSource({"+359886806048, coherentSolutions!92",
                 "t.te5tuser,    coherentSolutions!92"})
-    public void logInWithDifferentCredentials(String login, String pass) {
+    public void logInWithDifferentCredentials(String login, String pass) throws IOException {
         homePage = new HomePage(driver);
+        takeScreenShot("Yandex Home Page Screenshot");
+
         logInPage = homePage.clickOnLogInButton();
         mailPage = logInPage.logIn(login, pass);
 
