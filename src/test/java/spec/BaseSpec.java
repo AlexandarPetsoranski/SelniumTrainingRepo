@@ -18,7 +18,6 @@ public class BaseSpec {
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get(ProjectVariables.MAIN_URL);
-
     }
 
     @AfterEach

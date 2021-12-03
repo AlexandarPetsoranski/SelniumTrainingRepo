@@ -15,7 +15,6 @@ public class SingletonBrowser {
     private SingletonBrowser() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-
     }
 
     public static SingletonBrowser getInstance() {
