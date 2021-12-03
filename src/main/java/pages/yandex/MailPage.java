@@ -1,5 +1,6 @@
 package pages.yandex;
 
+import helperClasses.SingletonBrowser;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.By;
@@ -13,19 +14,20 @@ public class MailPage {
     private static final By LIGHT_VERSION_BUTTON = By.cssSelector("span.mail-App-Footer-Item.mail-App-Footer-Item_lite");
     private final By CUSTOMER_NAME = By.cssSelector(".b-pseudo-link");
     private final By LOG_OUT_LINK = By.cssSelector("a.b-header__link_exit");
+    private final By USER_NAME = By.className("b-dropdown__or");
 
     final WebDriver driver;
 
-    public MailPage(WebDriver driver) {
-        this.driver = driver;
+    public MailPage() {
+        this.driver = SingletonBrowser.getInstance().getDriver();
     }
 
     public MailPage switchToLightVersion(){
         driver.findElement(LIGHT_VERSION_BUTTON).click();
-        return new MailPage(driver);
+        return new MailPage();
     }
     public MailPage logOut(){
         driver.findElement(LOG_OUT_LINK).click();
-        return new MailPage(driver);
+        return new MailPage();
     }
 }

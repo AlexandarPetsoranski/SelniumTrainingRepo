@@ -31,6 +31,6 @@ public class CreateAccountPage {
         driver.findElement(CONFIRM_PASSWORD_INPUT).sendKeys(ProjectVariables.PASSWORD);
         driver.findElement(PHONE_NUMBER_INPUT).sendKeys(ProjectVariables.PHONE_NUMBER);
         driver.findElement(REGISTER_BUTTON).click();
-        return new MailPage(driver);
+        return new MailPage();
     }
 }
