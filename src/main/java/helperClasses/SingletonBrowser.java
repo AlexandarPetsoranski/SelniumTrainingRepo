@@ -15,10 +15,7 @@ public class SingletonBrowser {
     private SingletonBrowser() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get(ProjectVariables.MAIN_URL);
-        driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
     }
 
     public static SingletonBrowser getInstance() {
@@ -36,5 +33,4 @@ public class SingletonBrowser {
         driver.quit();
         instance = null;
     }
-
 }
