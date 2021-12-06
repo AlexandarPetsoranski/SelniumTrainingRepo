@@ -13,7 +13,7 @@ public class MailPage {
     private static final By LIGHT_VERSION_BUTTON = By.cssSelector("span.mail-App-Footer-Item.mail-App-Footer-Item_lite");
     private static final By CUSTOMER_NAME = By.cssSelector(".b-pseudo-link");
     private static final By LOG_OUT_LINK = By.cssSelector("a.b-header__link_exit");
-    private static final By USER_NAME = By.className("b-head-user");
+    private static final By USER_NAME = By.xpath("//div[@class='b-head-user']//a[contains(@href,'profile')]");
 
     private final WebDriver driver;
 
