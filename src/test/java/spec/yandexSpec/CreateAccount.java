@@ -1,5 +1,6 @@
 package spec.yandexSpec;
 
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,12 +26,14 @@ public class CreateAccount extends BaseSpec {
     private MailPage mailPage;
 
     @Test
+    @Description ("This test verifies user can successfully open YandexHomePage")
     public void verifyYandexHomePage() {
         String ExpectedPageTitle = "Yandex.Mail — free, reliable email";
 
         Assertions.assertEquals(driver.getTitle(), ExpectedPageTitle);
     }
 
+    @Description ("This test verifies user can successfully log in into Yandex mail")
     @Test
     public void verifyUserCanLogInSuccessfully() throws InterruptedException {
         homePage = new HomePage(driver);
@@ -50,6 +53,7 @@ public class CreateAccount extends BaseSpec {
         logger.info("Yandex Logo is not displayed");
     }
 
+    @Description ("This test verifies user can successfully log in into Yandex mail with different credentials")
     @ParameterizedTest
     @CsvSource({"+359886806048, coherentSolutions!92",
                 "t.te5tuser,    coherentSolutions!92"})
