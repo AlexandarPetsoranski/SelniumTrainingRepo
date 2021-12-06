@@ -10,11 +10,11 @@ import java.time.Duration;
 public class SingletonBrowser {
 
     private static SingletonBrowser instance =null;
-    private static WebDriver driver;
+    private final WebDriver driver;
 
     private SingletonBrowser() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        this.driver = new ChromeDriver();
     }
 
     public static SingletonBrowser getInstance() {
@@ -28,8 +28,8 @@ public class SingletonBrowser {
         return driver;
     }
 
-    public static void closeBrowser(){
-        driver.quit();
+    public void closeBrowser(){
+        driver.close();
         instance = null;
     }
 }

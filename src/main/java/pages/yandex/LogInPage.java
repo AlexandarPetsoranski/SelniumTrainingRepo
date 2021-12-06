@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 @Setter
 public class LogInPage {
 
-    final WebDriver driver;
+    private final WebDriver driver;
 
     private static final By ENTER_YOUR_ID_INPUT = By.id("passp-field-login");
     private static final By LOG_IN_BUTTON = By.id("passp:sign-in");

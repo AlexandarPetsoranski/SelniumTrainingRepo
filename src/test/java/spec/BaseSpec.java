@@ -9,10 +9,10 @@ import projectVeriables.ProjectVariables;
 import java.time.Duration;
 
 public class BaseSpec {
-    protected static WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         driver = SingletonBrowser.getInstance().getDriver();
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -22,6 +22,6 @@ public class BaseSpec {
 
     @AfterEach
     void cleanup() {
-        SingletonBrowser.closeBrowser();
+        SingletonBrowser.getInstance().closeBrowser();
     }
 }

@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 @Getter
 @Setter
 public class HomePage {
-    final WebDriver driver;
+    private final WebDriver driver;
 
     private static final By HOME_PAGE_TITLE = By.xpath("//div[@class=\"HeadBanner-Title\"]");
     private static final By CREATE_ACCOUNT_BUTTON = By.xpath("//div[@class='HeadBanner-ButtonsWrapper']/a/span[contains(text(),'Create an account')]");
@@ -18,12 +18,16 @@ public class HomePage {
 
     public HomePage() {
         this.driver = SingletonBrowser.getInstance().getDriver();
-        //this.driver = driver;
-        //this.driver.get(ProjectVariables.MAIN_URL);
     }
 
     public LogInPage clickOnLogInButton() {
         driver.findElement(LOG_IN_BUTTON).click();
         return new LogInPage();
+    }
+
+    public boolean verifyHomePage(){
+        driver.findElement(CREATE_ACCOUNT_BUTTON).isDisplayed();
+        driver.findElement(LOG_IN_BUTTON).isDisplayed();
+        return true;
     }
 }

@@ -9,7 +9,7 @@ import projectVeriables.ProjectVariables;
 @Getter
 @Setter
 public class CreateAccountPage {
-    final WebDriver driver;
+    private final WebDriver driver;
 
     public CreateAccountPage(WebDriver driver) {
         this.driver = driver;
