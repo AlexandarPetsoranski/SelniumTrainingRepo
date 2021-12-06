@@ -3,9 +3,13 @@ package spec;
 import helperClasses.SingletonBrowser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import projectVeriables.ProjectVariables;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
 public class BaseSpec {
@@ -23,5 +27,11 @@ public class BaseSpec {
     @AfterEach
     void cleanup() {
         SingletonBrowser.getInstance().closeBrowser();
+    }
+
+    public static void takeScreenShot(String fileName) throws IOException {
+        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(file,
+                new File("src/main/resources/screenShots/"+fileName+".jpg"));
     }
 }
