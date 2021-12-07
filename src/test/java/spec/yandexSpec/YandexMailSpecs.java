@@ -16,43 +16,38 @@ import projectVeriables.ProjectVariables;
 import spec.BaseSpec;
 
 public class YandexMailSpecs extends BaseSpec {
-    private static final Logger logger = LoggerFactory.getLogger(YandexMailSpecs.class);
     private HomePage homePage;
 
     @Test
     public void verifyYandexHomePage() {
         homePage = new HomePage();
-        driver = homePage.getDriver();
 
-        Assertions.assertTrue(homePage.verifyHomePage());
+        Assertions.assertTrue(homePage.isHomePageDisplayed(),
+                "Home page is not displayed! Might be because some elements are not displayed.");
     }
 
     @Test
     public void verifyUserCanLogInSuccessfully() {
         homePage = new HomePage();
-        driver = homePage.getDriver();
 
         LogInPage logInPage = homePage.clickOnLogInButton();
         MailPage mailPage = logInPage.logIn(ProjectVariables.PHONE_NUMBER, ProjectVariables.PASSWORD).switchToLightVersion();
 
-        WebElement userName = driver.findElement(mailPage.getUSER_NAME());
-        String expectedRealName = userName.getAttribute("aria-label");
-
-        Assertions.assertTrue(expectedRealName.contains(ProjectVariables.USER_NAME),
+        Assertions.assertTrue(mailPage.getUSER_NAME().contains(ProjectVariables.USER_NAME),
                 "User name does not match! ");
     }
 
     @Test
     public void verifyUserLogOutSuccessfully() {
         homePage = new HomePage();
-        driver = homePage.getDriver();
 
         LogInPage logInPage = homePage.clickOnLogInButton();
         MailPage mailPage = logInPage.logIn(ProjectVariables.PHONE_NUMBER, ProjectVariables.PASSWORD).switchToLightVersion();
 
         YandexMainPage yandexMainPage = mailPage.logOut();
 
-        Assertions.assertTrue(yandexMainPage.verifyYandexNavigationBarPresented());
+        Assertions.assertTrue(yandexMainPage.verifyYandexNavigationBarPresented(),
+                "Yandex page is not presented! Navigation bar not displayed.");
     }
 
     @ParameterizedTest
@@ -63,7 +58,6 @@ public class YandexMailSpecs extends BaseSpec {
         LogInPage logInPage = homePage.clickOnLogInButton();
         logInPage.logIn(login, pass);
 
-        driver = homePage.getDriver();
         Assertions.assertTrue(driver.getTitle().contains(ProjectVariables.MAIL_PAGE_TITLE),
                 "Title does not match!" );
     }

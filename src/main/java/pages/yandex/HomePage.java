@@ -6,8 +6,6 @@ import lombok.Setter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-@Getter
-@Setter
 public class HomePage {
     private final WebDriver driver;
 
@@ -25,9 +23,8 @@ public class HomePage {
         return new LogInPage();
     }
 
-    public boolean verifyHomePage(){
-        driver.findElement(CREATE_ACCOUNT_BUTTON).isDisplayed();
-        driver.findElement(LOG_IN_BUTTON).isDisplayed();
-        return true;
+    public boolean isHomePageDisplayed() {
+        return driver.findElement(CREATE_ACCOUNT_BUTTON).isDisplayed() &&
+                driver.findElement(LOG_IN_BUTTON).isDisplayed();
     }
 }
