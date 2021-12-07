@@ -18,4 +18,6 @@ public class ProjectVariables {
     public static final String EXPECTED_TITLE = "Yandex.Mail";
     public static final String YANDEX_URL = "https://yandex.com/";
     public static final String MAIL_PAGE_TITLE = "Authorization";
+
+    public static final String SCREENSHOT_PATH = "src/main/resources/screenShots/";
 }

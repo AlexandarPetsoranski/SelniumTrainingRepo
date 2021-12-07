@@ -1,6 +1,7 @@
 package pages.yandex;
 
 import helperClasses.SingletonBrowser;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +23,7 @@ public class MailPage {
         this.driver = SingletonBrowser.getInstance().getDriver();
     }
 
+    @Step ("Switch from full version to light version")
     public MailPage switchToLightVersion(){
         driver.findElement(LIGHT_VERSION_BUTTON).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -30,6 +32,7 @@ public class MailPage {
         return new MailPage();
     }
 
+    @Step ("Log out from Yandex mail")
     public YandexMainPage logOut(){
         driver.findElement(LOG_OUT_LINK).click();
         return new YandexMainPage();
