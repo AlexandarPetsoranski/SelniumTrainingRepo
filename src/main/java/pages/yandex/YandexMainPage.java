@@ -14,7 +14,6 @@ public class YandexMainPage {
     }
 
     public boolean verifyYandexNavigationBarPresented(){
-        driver.findElement(NAVIGATION_BAR).isDisplayed();
-        return true;
+        return driver.findElement(NAVIGATION_BAR).isDisplayed();
     }
 }

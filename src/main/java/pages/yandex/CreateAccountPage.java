@@ -6,8 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import projectVeriables.ProjectVariables;
 
-@Getter
-@Setter
 public class CreateAccountPage {
     private final WebDriver driver;
 

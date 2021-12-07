@@ -6,8 +6,6 @@ import lombok.Setter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-@Getter
-@Setter
 public class LogInPage {
 
     private final WebDriver driver;
