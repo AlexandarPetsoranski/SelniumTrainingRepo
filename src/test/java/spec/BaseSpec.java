@@ -1,37 +1,27 @@
 package spec;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.io.FileUtils;
+import helperClasses.SingletonBrowser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import projectVeriables.ProjectVariables;
 
-import java.io.File;
-import java.io.IOException;
 import java.time.Duration;
 
 public class BaseSpec {
-    public static WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeEach
-    void setup(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    void setup() {
+        driver = SingletonBrowser.getInstance().getDriver();
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.get(ProjectVariables.MAIN_URL);
     }
 
     @AfterEach
-    void cleanup(){
-        driver.quit();
-    }
-
-    public static void takeScreenShot(String fileName) throws IOException {
-        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(file,
-                new File("src/main/resources/screenShots/"+fileName+".jpg"));
+    void cleanup() {
+        SingletonBrowser.getInstance().closeBrowser();
     }
 }
