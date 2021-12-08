@@ -1,8 +1,6 @@
 package pages.yandex;
 
 import helperClasses.SingletonBrowser;
-import lombok.Getter;
-import lombok.Setter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import projectVeriables.ProjectVariables;
 
 public class HomePage {
-    final WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(xpath="//div[@class=\"HeadBanner-Title\"]")
     private static WebElement HOME_PAGE_TITLE;
@@ -24,18 +22,20 @@ public class HomePage {
     @FindBy(xpath="//button[@data-id=\"button-all\"]")
     private static WebElement ACCEPT_COOKIES;
 
-    public LogInPage clickOnLogInButton() {
-        LOG_IN_BUTTON.click();
-        return new LogInPage(driver);
-    }
-    public boolean isHomePageDisplayed() {
-        return driver.findElement(CREATE_ACCOUNT_BUTTON).isDisplayed() &&
-                driver.findElement(LOG_IN_BUTTON).isDisplayed();
+    public HomePage() {
+        this.driver = SingletonBrowser.getInstance().getDriver();
+        PageFactory.initElements(driver, this);
     }
 
-    public HomePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-        this.driver.get(ProjectVariables.MAIN_URL);
+    public LogInPage clickOnLogInButton() {
+        LOG_IN_BUTTON.click();
+        return new LogInPage();
     }
+
+    public boolean isHomePageDisplayed() {
+        return CREATE_ACCOUNT_BUTTON.isDisplayed() &&
+                LOG_IN_BUTTON.isDisplayed();
+    }
+
+
 }

@@ -1,19 +1,21 @@
 package pages.yandex;
 
 import helperClasses.SingletonBrowser;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class YandexMainPage {
     private final WebDriver driver;
 
-    private static final By NAVIGATION_BAR = By.xpath("//div[@role='navigation']");
+    @FindBy(xpath = "//div[@role='navigation']")
+    private static WebElement NAVIGATION_BAR;
 
     public YandexMainPage() {
         this.driver = SingletonBrowser.getInstance().getDriver();
     }
 
     public boolean verifyYandexNavigationBarPresented(){
-        return driver.findElement(NAVIGATION_BAR).isDisplayed();
+        return NAVIGATION_BAR.isDisplayed();
     }
 }
