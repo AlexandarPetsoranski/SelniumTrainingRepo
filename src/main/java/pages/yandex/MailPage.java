@@ -35,7 +35,7 @@ public class MailPage {
         return new YandexMainPage();
     }
 
-    public String getUSER_NAME (){
+    public String getUserName(){
         return driver.findElement(USER_NAME).getAttribute("aria-label");
     }
 }
