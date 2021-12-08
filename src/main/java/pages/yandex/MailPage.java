@@ -2,15 +2,20 @@ package pages.yandex;
 
 import lombok.Getter;
 import lombok.Setter;
+import helperClasses.SingletonBrowser;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-@Getter
-@Setter
+import java.time.Duration;
+
 public class MailPage {
-    final WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(css = ".PSHeaderLogo360_theme_light")
     private static WebElement YANDEX_LOGO;
@@ -37,8 +42,11 @@ public class MailPage {
         return new MailPage(driver);
     }
 
-    public MailPage logOut(){
+    public YandexMainPage logOut(){
         LOG_OUT_LINK.click();
-        return new MailPage(driver);
+        return new YandexMainPage();
+    }
+    public String getUserName(){
+        return driver.findElement(USER_NAME).getAttribute("aria-label");
     }
 }

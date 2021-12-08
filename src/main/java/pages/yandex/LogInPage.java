@@ -1,5 +1,6 @@
 package pages.yandex;
 
+import helperClasses.SingletonBrowser;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
@@ -7,10 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-@Getter
-@Setter
 public class LogInPage {
 
+    private final WebDriver driver;
     final WebDriver driver;
 
     public LogInPage(WebDriver driver) {

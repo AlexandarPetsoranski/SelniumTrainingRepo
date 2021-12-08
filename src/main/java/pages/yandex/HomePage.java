@@ -1,5 +1,6 @@
 package pages.yandex;
 
+import helperClasses.SingletonBrowser;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.WebDriver;
@@ -8,8 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import projectVeriables.ProjectVariables;
 
-@Getter
-@Setter
 public class HomePage {
     final WebDriver driver;
 
@@ -28,6 +27,10 @@ public class HomePage {
     public LogInPage clickOnLogInButton() {
         LOG_IN_BUTTON.click();
         return new LogInPage(driver);
+    }
+    public boolean isHomePageDisplayed() {
+        return driver.findElement(CREATE_ACCOUNT_BUTTON).isDisplayed() &&
+                driver.findElement(LOG_IN_BUTTON).isDisplayed();
     }
 
     public HomePage(WebDriver driver) {

@@ -1,22 +1,27 @@
 package spec;
 
-import helperClasses.SingletonBrowserClass;
+import helperClasses.SingletonBrowser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
+import projectVeriables.ProjectVariables;
+
+import java.time.Duration;
 
 public class BaseSpec {
-    protected static WebDriver driver;
-    SingletonBrowserClass singletonBrowserClass = null;
+    protected WebDriver driver;
 
     @BeforeEach
     void setup() {
-        singletonBrowserClass = SingletonBrowserClass.getInstanceOfSingletonBrowserClass();
-        driver = singletonBrowserClass.getDriver();
+        driver = SingletonBrowser.getInstance().getDriver();
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.get(ProjectVariables.MAIN_URL);
     }
 
     @AfterEach
     void cleanup() {
-        singletonBrowserClass.closeDriver();
+        SingletonBrowser.getInstance().closeBrowser();
     }
 }

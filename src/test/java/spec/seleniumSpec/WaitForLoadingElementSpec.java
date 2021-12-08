@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.seleniumTraining.LoadingDataPage;
 import spec.BaseSpec;
-import spec.yandexSpec.CreateAccount;
 
 import java.time.Duration;
 
