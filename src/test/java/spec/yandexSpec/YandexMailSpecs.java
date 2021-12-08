@@ -4,10 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import pages.yandex.HomePage;
 import pages.yandex.LogInPage;
 import pages.yandex.MailPage;
@@ -33,7 +29,7 @@ public class YandexMailSpecs extends BaseSpec {
         LogInPage logInPage = homePage.clickOnLogInButton();
         MailPage mailPage = logInPage.logIn(ProjectVariables.PHONE_NUMBER, ProjectVariables.PASSWORD).switchToLightVersion();
 
-        Assertions.assertTrue(mailPage.getUSER_NAME().contains(ProjectVariables.USER_NAME),
+        Assertions.assertTrue(mailPage.getUserName().contains(ProjectVariables.USER_NAME),
                 "User name does not match! ");
     }
 
