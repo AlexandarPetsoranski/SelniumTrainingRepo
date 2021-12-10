@@ -29,7 +29,7 @@ public class HomePage {
                 driver.findElement(LOG_IN_BUTTON).isDisplayed();
     }
 
-    public WebElement get_NOT_EXISTING_ELEMENT (){
+    public WebElement getNotExistingElement(){
         return driver.findElement(NOT_EXISTING_ELEMENT);
     }
 }

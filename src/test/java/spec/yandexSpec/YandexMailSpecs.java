@@ -4,8 +4,8 @@ import io.qameta.allure.AllureId;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,7 +20,7 @@ import spec.BaseSpec;
 public class YandexMailSpecs extends BaseSpec {
     private HomePage homePage;
 
-    @Test
+    @Test ()
     @Severity(SeverityLevel.BLOCKER)
     @AllureId("1")
     @Description("This test verifies user can successfully open YandexHomePage")
@@ -94,7 +94,7 @@ public class YandexMailSpecs extends BaseSpec {
         Assertions.fail();
     }
 
-    @Ignore
+    @Disabled
     @Test
     @Severity(SeverityLevel.MINOR)
     @AllureId("6")
@@ -114,6 +114,7 @@ public class YandexMailSpecs extends BaseSpec {
     public void elementNotFount() {
         homePage = new HomePage();
 
-        homePage.get_NOT_EXISTING_ELEMENT();
+        homePage.getNotExistingElement();
     }
+
 }

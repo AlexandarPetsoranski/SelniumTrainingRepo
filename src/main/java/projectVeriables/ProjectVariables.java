@@ -20,4 +20,6 @@ public class ProjectVariables {
     public static final String MAIL_PAGE_TITLE = "Authorization";
 
     public static final String SCREENSHOT_PATH = "src/main/resources/screenShots/";
+    public static final String ENVIRONMENT_XML_PATH = "C:\\Users\\alexandarpetsoranski\\IdeaProjects\\SelniumTrainingRepo\\allure-results\\environment.properties";
+
 }

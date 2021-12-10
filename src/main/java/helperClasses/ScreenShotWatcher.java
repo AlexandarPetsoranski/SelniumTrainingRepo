@@ -31,7 +31,7 @@ public class ScreenShotWatcher implements TestWatcher {
 
             new File(path).mkdirs();
 
-            try ( FileOutputStream out = new FileOutputStream(path + File.separator + "screenshot-" + fileName + ".png")) {
+            try ( FileOutputStream out = new FileOutputStream(path + File.separator + "screenshot-" + fileName + ".jpg")) {
                 out.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
             }
         } catch (IOException | WebDriverException e) {
