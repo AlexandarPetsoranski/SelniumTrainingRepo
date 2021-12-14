@@ -22,4 +22,6 @@ public class ProjectVariables {
     public static final String SCREENSHOT_PATH = "src/main/resources/screenShots/";
     public static final String ENVIRONMENT_XML_PATH = "C:\\Users\\alexandarpetsoranski\\IdeaProjects\\SelniumTrainingRepo\\allure-results\\environment.properties";
 
+    public static final String REMOTE_URL = "http://10.11.9.10:4444/wd/hub";
+
 }

@@ -3,7 +3,7 @@ package spec;
 import helperClasses.ScreenShotWatcher;
 import helperClasses.SingletonBrowser;
 import helperClasses.EnvironmentCSVCreator;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -32,8 +32,8 @@ public class BaseSpec {
         driver.get(ProjectVariables.MAIN_URL);
     }
 
-    @AfterEach
-    public void cleanup() {
+    @AfterAll
+    static void cleanup() {
 
         SingletonBrowser.getInstance().closeBrowser();
     }
